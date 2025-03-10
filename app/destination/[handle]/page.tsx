@@ -14,7 +14,14 @@ async function getDestinationData(handle: string) {
     return { trips: [] }
   }
 }
+interface Trip{
+  "trip-name": string
+  description:string
+  duration:string
+  amenities:string[]
+  price:number
 
+}
 const amenityIcons: Record<string, React.ReactNode> = {
   "4-star hotels": <Star className="h-4 w-4" />,
   "luxury accommodation": <Star className="h-4 w-4" />,
@@ -86,7 +93,7 @@ export default async function DestinationPage({ params }: { params: { handle: st
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {destinationData.trips.map((trip: any, index: number) => {
+          {destinationData.trips.map((trip:Trip, index: number) => {
             
             return (
               <Card key={index} className="overflow-hidden h-full flex flex-col">

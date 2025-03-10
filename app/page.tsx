@@ -5,7 +5,6 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { DestinationCard } from "@/components/destination-card";
 import axios from "axios";
 
@@ -18,10 +17,8 @@ export default function Home() {
   useEffect(() => {
     setIsLoading(true);
     
-    // Fetch banners using .then()
     axios.get("https://json-data-1wm2.onrender.com/banners")
       .then(response => {
-        // Extract the banners array from the response
         const bannersData = response.data.banners || [];
         setBanners(bannersData);
       })
@@ -30,10 +27,8 @@ export default function Home() {
         setError("Failed to load banners. Please try again later.");
       });
     
-    // Fetch featured destinations using .then()
     axios.get("https://json-data-1wm2.onrender.com/featured-destination")
       .then(response => {
-        // Extract the destination array from the response
         const destinationsData = response.data.destination || [];
         setFeaturedDestinations(destinationsData);
       })
